@@ -1,13 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import Wheather from './components/WheatherComponent';
+import Loading from './components/LoadingComponent';
+import * as Location from 'expo-location';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <ShowWheatherIfNotLoading isLoading={true}></ShowWheatherIfNotLoading>
       <StatusBar style="auto" />
     </View>
   );
+}
+
+function ShowWheatherIfNotLoading(props) {
+  if(props.isLoading) {
+    return (<Loading></Loading>)
+  } else {
+    return (<Wheather></Wheather>)
+  }
 }
 
 const styles = StyleSheet.create({
